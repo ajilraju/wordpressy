@@ -32,12 +32,13 @@ def enumerate(target):
 	headers = {'user-agent': random_user_agent}
 
 	for d in directories:
-			r = requests.get(f'http://{target}{d}', headers=headers)
-			if '404' and 'Not Found' in r.text:
-					fail_count += 1
-					print(colors.WARNING + target + d + " does not exist" + colors.ENDC)
-			else:
-					print(colors.OKGREEN + "Found directory: " + target + d + colors.ENDC)	
+		r = requests.get(f'http://{target}{d}', headers=headers)
+		if '404' and 'Not Found' in r.text:
+				fail_count += 1
+				print(colors.WARNING + target + d + " does not exist" + colors.ENDC)
+		else:
+				print(colors.OKGREEN + "Found directory: " + target + d + colors.ENDC)	
+				
 	if fail_count >= 6:
 		print()
 		print(colors.FAIL + "Matching Failed!!!" + colors.ENDC)
